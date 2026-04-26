@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Auteurs</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <main class="container page-content">
+
+        <h2 class="page-title">Gestion des Auteurs</h2>
+
+        <div class="card">
+            <form th:action="@{/auteur/ajouter}" method="post" class="form-group">
+                <div class="form-field">
+                    <label for="nomPrenom">Nom et prénom :</label>
+                    <input type="text"
+                           id="nomPrenom"
+                           name="nomPrenom"
+                           class="form-control"
+                           required>
+                </div>
+                <button type="submit" class="btn btn--success">Ajouter</button>
+            </form>
+
+            <hr class="divider">
+
+            <h3>Liste des Auteurs</h3>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom et Prénom</th>
+                        <th>NbrePoints</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="auteur : ${auteurs}">
+                        <td th:text="${auteur.id}"></td>
+                        <td th:text="${auteur.nomPrenom}"></td>
+                        <td th:text="${auteur.nbrePoints}"></td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(auteurs)}">
+                        <td colspan="3" class="empty-msg">Aucun auteur enregistré.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a th:href="@{/}" class="link-back">&larr; Retour au Menu</a>
+
+    </main>
+</body>
+</html>

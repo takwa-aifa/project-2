@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Livres</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <main class="container page-content">
+
+        <h2 class="page-title">Gestion des Livres</h2>
+
+        <div class="card">
+            <form th:action="@{/livre/ajouter}" method="post" class="form-group">
+
+                <div class="form-field">
+                    <label for="isbn">ISBN :</label>
+                    <input type="text"
+                           id="isbn"
+                           name="isbn"
+                           class="form-control"
+                           required>
+                </div>
+
+                <div class="form-field">
+                    <label for="titre">Titre :</label>
+                    <input type="text"
+                           id="titre"
+                           name="titre"
+                           class="form-control"
+                           required>
+                </div>
+
+                <div class="form-field">
+                    <label for="anneeParution">Année de parution :</label>
+                    <input type="number"
+                           id="anneeParution"
+                           name="anneeParution"
+                           placeholder="Année"
+                           min="1000"
+                           max="2025"
+                           class="form-control"
+                           required>
+                </div>
+
+                <button type="submit" class="btn btn--success">Ajouter</button>
+
+            </form>
+
+            <hr class="divider">
+
+            <h3>Liste des Livres</h3>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ISBN</th>
+                        <th>Titre</th>
+                        <th>Année de parution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="livre : ${livres}">
+                        <td th:text="${livre.isbn}"></td>
+                        <td th:text="${livre.titre}"></td>
+                        <td th:text="${livre.anneeParution}"></td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(livres)}">
+                        <td colspan="3" class="empty-msg">Aucun livre enregistré.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a th:href="@{/}" class="link-back">&larr; Retour au Menu</a>
+
+    </main>
+</body>
+</html>

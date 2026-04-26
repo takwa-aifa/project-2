@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Bibliotheque</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <h1 th:text="${annee}">JavaEE</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="menu-card">
+            <div class="menu-card__header">
+                <h2>Menu : Gestion d'une librairie </h2>
+            </div>
+
+            <div class="menu-card__desc">
+                <p>Ajouter des livres</p>
+                <p>Ajouter des auteurs</p>
+                <p class="small">Affectation des auteurs aux livres</p>
+            </div>
+
+            <div class="menu-card__actions">
+                <a th:href="@{/auteur}" class="btn btn--primary">
+                    &#9632; Gérer les Auteurs
+                </a>
+                <a th:href="@{/livre}" class="btn btn--primary">
+                    &#9632; Gérer les Livres
+                </a>
+                <a th:href="@{/livre/affecterAuteur}" class="btn btn--primary">
+                    &#128279; Affecter Auteurs aux Livres
+                </a>
+                <a href="#" class="btn btn--primary">
+                    &#128100; Retour au CV
+                </a>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
